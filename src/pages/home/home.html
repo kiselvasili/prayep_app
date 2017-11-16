@@ -1,0 +1,24 @@
+<ion-content class="home-wrapper">
+    <div class="logo">
+        <img src="assets/logo.svg" alt="logo" class="logo__img">
+        <h1 class="logo__text" text-center>Молитвеннная <br> комната</h1>
+    </div>
+    <div class="registration" padding>
+        <span class="registration__verse" 
+              text-center>“Молитесь во всякое время духом”</span>
+        <span class="registration__link" 
+              text-right>Еф.6:18</span>
+        <button ion-button 
+                [navPush]="loginPage"
+                block 
+                color="light" 
+                outline 
+                class="registration__button registration__button--login">
+                Войти</button>
+        <button [navPush]="signUpPage"
+                ion-button 
+                block 
+                class="registration__button registration__button--signup">
+                Зарегистрироваться</button>
+    </div>
+</ion-content>

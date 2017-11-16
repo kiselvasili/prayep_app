@@ -1,0 +1,48 @@
+.home-wrapper {
+    // background-image: url('../../assets/main-bg.jpg');
+    background: url(../../assets/main-bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    // background: lightblue;
+    background-size: cover;
+    background-position: center center;
+}
+
+.logo {
+    margin-top: 65px;
+    margin-bottom: 20px;
+}
+
+.logo__img {
+    max-width: 50%;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.logo__text {
+    font-size: 45px;
+    line-height: 38px;
+    font-family: 'Marck Script';
+    color: #fff;
+}
+
+.registration__verse, .registration__link {
+    display: block;
+    color: #fff;
+}
+
+.registration__verse {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+}
+
+.registration__link {
+    font-family: 'PT Sans', sans-serif;
+    padding-right: 10px;
+    margin-bottom: 90px;
+}
+
+.registration__button--login {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,32 @@
+// .login-wrapper {
+//     background-size: cover;
+//     background-color: transparent;
+// }
+
+.login-header {
+    // background-image: url('../../assets/main-bg.jpg');
+    background: url(../../assets/main-bg.jpg) no-repeat center center fixed;
+    // background: lightblue;
+    padding: 25% 0;
+}
+
+.login-header__title {
+    font-size: 45px;
+    line-height: 38px;
+    font-family: 'Marck Script';
+    color: #fff;
+}
+
+.login-wrapper__title {
+    color: #2091eb;
+    margin-top: 25px!important;
+}
+
+.login-wrapper__input-item {
+    padding-left: 0;
+}
+
+.login-wrapper__input-item--password {
+    padding-left: 0;
+    margin-bottom: 50px;
+}
