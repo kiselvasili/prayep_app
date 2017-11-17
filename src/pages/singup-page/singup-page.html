@@ -6,17 +6,19 @@
 <ion-content class="login-wrapper" padding>
     <h2 class="login-wrapper__title"
         text-center>Ввязаться в войну!</h2>
-    <ion-item class="login-wrapper__input-item">
-        <ion-label color="gray" floating>Email:</ion-label>
-        <ion-input></ion-input>
-    </ion-item>
-    <ion-item class="login-wrapper__input-item login-wrapper__input-item--password">
-        <ion-label color="gray" floating>Пароль:</ion-label>
-        <ion-input></ion-input>
-    </ion-item>
-    <button (click)="register()"
-            ion-button 
-            block
-            class="registration__button registration__button--login">
-            Зарегистрироваться</button>
+    <form [formGroup]="accountForm">
+        <ion-item class="login-wrapper__input-item">
+            <ion-label color="gray" floating>Email:</ion-label>
+            <ion-input formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item class="login-wrapper__input-item login-wrapper__input-item--password">
+            <ion-label color="gray" floating>Пароль:</ion-label>
+            <ion-input formControlName="password"></ion-input>
+        </ion-item>
+        <button (click)="register()"
+                ion-button 
+                block
+                class="registration__button registration__button--login">
+                Зарегистрироваться</button>
+    </form>
 </ion-content>

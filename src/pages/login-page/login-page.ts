@@ -1,53 +1,62 @@
-import { HomePage } from './../home/home';
-import { AuthService } from './../../providers/auth';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Storage } from '@ionic/storage';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+
+import { HomePage } from './../home/home';
+import { AuthService } from './../../core/auth.service';
 import { SignupPage } from '../singup-page/singup-page';
 
 @IonicPage()
 @Component({
-  selector: 'page-login-page',
-  templateUrl: 'login-page.html',
+    selector: 'page-login-page',
+    templateUrl: 'login-page.html',
 })
-export class LoginPage {
-  public email: string;
-  public password: string;
-  public loading: any;
+export class LoginPage implements OnInit{
+    public email: string;
+    public password: string;
+    public loading: any;
+    public credentials: FormGroup;
 
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams,
-              public authService: AuthService,
-              public loadingCtrl: LoadingController) {}
+    constructor(public navCtrl: NavController, 
+                public navParams: NavParams,
+                public authService: AuthService,
+                public loadingCtrl: LoadingController,
+                public storage: Storage,
+                public _fb: FormBuilder) {}
 
-  public login() {
-    this.showLoader();
+    public ngOnInit(): void {
+        this.credentials = this._fb.group({
+            'email': '',
+            'password': ''
+        });
+    }
 
-    let credentials = {
-      email: this.email,
-      password: this.password
-    };
+    public login() {
+        this.showLoader();
 
-    this.authService.login(credentials)
-      .then((result) => {
-        this.loading.dismiss();
-        console.log(result);
-        this.navCtrl.setRoot(HomePage);
-      }, err => {
-        this.loading.dismiss();
-        console.log(err);
-    });
-  }
+        console.log(this.credentials.value);
 
-  public launchSignUp() {
-    this.navCtrl.push(SignupPage);
-  }
+        this.authService.login(this.credentials.value)
+            .subscribe(data => {
+                this.loading.dismiss();
+                console.log('data', data);
+            },
+            (err) => {
+                this.loading.dismiss();
+            });
+    }
 
-  public showLoader(): void {
-    this.loading = this.loadingCtrl.create({
-      content: "Authencticating..."
-    });
+    public launchSignUp() {
+        this.navCtrl.push(SignupPage);
+    }
 
-    this.loading.present();
-  }
+    public showLoader(): void {
+        this.loading = this.loadingCtrl.create({
+            content: "Authencticating..."
+        });
+
+        this.loading.present();
+    }
 
 }
