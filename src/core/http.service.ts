@@ -14,25 +14,28 @@ export class ExtendedHttpService extends Http {
     }
 
     public request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
-        this.storage.get('token')
+        return Observable.fromPromise(
+            this.storage.get('token')
             .then(val => {
-                console.log(val);
+                console.log('request token here', val);
                 this.token = val;
-            });
-
-        if (typeof url === 'string') {
-            if (!options) {
-                options = {headers: new Headers()};
+            })
+        )
+        .flatMap(() => {
+            if (typeof url === 'string') {
+                if (!options) {
+                    options = {headers: new Headers()};
+                }
+                options.headers.set('Authorization', this.token);
+            } else {
+                url.headers.set('Authorization', this.token);
+                if (!(url.getBody() instanceof FormData)) {
+                    url.headers.set('Content-Type', 'application/json');
+                    JSON.stringify(url.getBody());
+                }
             }
-            options.headers.set('Authorization', this.token);
-        } else {
-            url.headers.set('Authorization', this.token);
-            if (!(url.getBody() instanceof FormData)) {
-                url.headers.set('Content-Type', 'application/json');
-                JSON.stringify(url.getBody());
-            }
-        }
-        return super.request(url, options).catch(this.catchAuthError);
+            return super.request(url, options).catch(this.catchAuthError);
+        });
     }
 
     public get<T>(url: string, options?: any): Observable<T> {

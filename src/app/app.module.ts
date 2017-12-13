@@ -3,13 +3,15 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { HttpModule, Http, RequestOptions, XHRBackend } from "@angular/http";
+import { HttpModule } from "@angular/http";
 import { IonicStorageModule } from '@ionic/storage';
+import { Facebook } from '@ionic-native/facebook';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPageModule } from './../pages/login-page/login-page.module';
 import { SingupPageModule } from '../pages/singup-page/singup-page.module';
+import { ProfilePageModule } from '../pages/profile/profile.module';
 import { AuthService } from '../core/auth.service';
 import { ExtendedHttpService } from './../core/http.service';
 
@@ -22,6 +24,7 @@ import { ExtendedHttpService } from './../core/http.service';
         BrowserModule,
         LoginPageModule,
         SingupPageModule,
+        ProfilePageModule,
         HttpModule,
         IonicModule.forRoot(MyApp),
         IonicStorageModule.forRoot()
@@ -39,10 +42,9 @@ import { ExtendedHttpService } from './../core/http.service';
             useClass: IonicErrorHandler
         },
         AuthService,
-        {
-            provide: Http,
-            useClass: ExtendedHttpService
-        }
+        ExtendedHttpService,
+        Facebook
+
     ]
 })
 export class AppModule {}
