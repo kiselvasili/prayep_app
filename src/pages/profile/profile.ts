@@ -3,6 +3,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { LoginPage } from '../login-page/login-page';
+import { TestPageOne } from '../test-page-one/test-page-one';
 
 @IonicPage()
 @Component({
@@ -10,8 +11,12 @@ import { LoginPage } from '../login-page/login-page';
     templateUrl: 'profile.html'
 })
 export class ProfilePage {
+    public rootPage: any = TestPageOne;
+
     constructor(private storage: Storage,
-                private navCtrl: NavController) {}
+                private navCtrl: NavController) {
+                    console.log(navCtrl);
+                }
 
     ionViewCanEnter(): boolean {
         return true;

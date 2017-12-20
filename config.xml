@@ -78,7 +78,6 @@
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
     </platform>
-    <engine name="android" spec="6.3.0" />
     <engine name="windows" spec="5.0.0" />
     <engine name="browser" spec="5.0.1" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
@@ -91,4 +90,5 @@
         <variable name="APP_ID" value="2715098495442284" />
         <variable name="APP_NAME" value="kiselvasili" />
     </plugin>
+    <engine name="android" spec="~6.3.0" />
 </widget>

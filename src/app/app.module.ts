@@ -14,6 +14,8 @@ import { SingupPageModule } from '../pages/singup-page/singup-page.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { AuthService } from '../core/auth.service';
 import { ExtendedHttpService } from './../core/http.service';
+import { TestPageOneModule } from '../pages/test-page-one/test-page-one.module';
+import { TestPageTwoModule } from '../pages/test-page-two/test-page-two.module';
 
 @NgModule({
     declarations: [
@@ -25,6 +27,8 @@ import { ExtendedHttpService } from './../core/http.service';
         LoginPageModule,
         SingupPageModule,
         ProfilePageModule,
+        TestPageOneModule,
+        TestPageTwoModule,
         HttpModule,
         IonicModule.forRoot(MyApp),
         IonicStorageModule.forRoot()
